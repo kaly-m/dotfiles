@@ -11,6 +11,7 @@ set undoreload=10000
 
 " display line numbers
 set relativenumber
+set number
 
 " use 4 spaces instead of tab
 " copy indent from current line when starting a new line
