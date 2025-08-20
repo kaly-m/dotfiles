@@ -1,0 +1,32 @@
+#######################
+# Linux based aliases #
+#######################
+alias ls='ls --color=auto'
+alias l='ls -CF'
+alias ll='ls -lah'
+alias la='ls -a'
+
+alias grep='grep --color=auto'
+
+###############
+# Git aliases #
+###############
+alias ga='git add'
+alias gc='git commit'
+alias gp='git push'
+
+#################
+# Stack aliases #
+#################
+alias d='dirs -v'
+for index ({1..9}) alias "$index"="cd +${index}"; unset index
+
+####################
+# Specific aliases #
+####################
+# reload X by setting up to date config files
+alias rldX='xrdb -merge $HOME/.config/X11/.Xresources'
+
+# find Instance (1) and Class (2) of an application
+alias findIC='xprop | grep WM_CLASS'
+
