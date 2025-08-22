@@ -14,7 +14,6 @@ bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 
-
 autoload -U compinit; compinit
 # Hidden files
 _comp_options+=(globdots)
@@ -45,6 +44,21 @@ export KEYTIMEOUT=1
 # Custom cursor (beam / block)
 autoload -Uz cursor_mode && cursor_mode
 
+#######
+# fzf #
+#######
+if [ $(command -v "fzf") ]; then
+    source /usr/share/fzf/completion.zsh
+    source /usr/share/fzf/key-bindings.zsh
+fi
+
+################
+# i3's startup #
+################
+if [ "$(tty)" = "/dev/tty1" ]; then
+    pgrep i3 || exec startx "$XDG_CONFIG_HOME/X11/.xinitrc"
+fi
+
 ####################
 # Special commands #
 ####################
@@ -62,5 +76,7 @@ bindkey -M vicmd v edit-command-line
 # bd to jump onto parent directories
 source ~/dotfiles/zsh/external/bd.zsh
 
-# syntax higlight
+source ~/dotfiles/zsh/scripts.sh
+
+# syntax higlight (must be at the end of the file)
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
